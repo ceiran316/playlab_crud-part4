@@ -20,8 +20,8 @@ public class Product extends Model {
     @Constraints.Required
     private String name;
 
-    @Constraints.Required
-    private String category;
+    @ManyToOne
+    private Category category;
 
     @Constraints.Required
     private String description;
@@ -37,7 +37,7 @@ public class Product extends Model {
     }
 
     // Constructor to initialise object
-    public  Product(Long id, String name, String description, int stock, double price) {
+    public  Product(Long id, String name, Category category, String description, int stock, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -69,6 +69,9 @@ public class Product extends Model {
     public void setName(String name) {
         this.name = name;
     }
+
+
+
     public String getDescription() {
         return description;
     }
@@ -93,11 +96,11 @@ public class Product extends Model {
         this.price = price;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }
